@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class DetailPage implements OnInit, OnDestroy {
 
-  constructor(private router: Router) {}
+  film: any;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) {}
 
   goBack() {
     this.router.navigate(['/login'])
@@ -17,7 +19,11 @@ export class DetailPage implements OnInit, OnDestroy {
   ngOnInit() {
     // With Routing in Ionic, The OnInit lifecycle hook 
     // may not get called consistently.
-    console.log("DetailPage - OnInit")
+    console.log("DetailPage - OnInit");
+    let id=this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.get(`https://swapi.dev/api/films/${id}`).subscribe(res=>{
+      this.film=res;
+    });
   }
 
   ngOnDestroy() {

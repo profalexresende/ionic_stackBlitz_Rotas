@@ -43,4 +43,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log("LoginPage - ViewWillLeave")
   }
 
+  abrirDetalhes(film){
+    let split=film.url.split('/');
+    console.log(split);
+    let filmId=split[5];
+    this.router.navigateByUrl(`/detail/${filmId}`);
+  }
+
 }

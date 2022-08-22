@@ -8,7 +8,7 @@
 
 <ion-list>
 
-<ion-item button detail lines="inset" *ngFor="let film of (films | async)?.results" > {{ film.title }}
+<ion-item button detail lines="inset" *ngFor="let film of (films | async)?.results" (click)="abrirDetalhes(film)" > {{ film.title }}
 </ion-item>
 </ion-list>
   <ion-button [routerLink]="['/detail']">Go to detail</ion-button>
