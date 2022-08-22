@@ -1,18 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
+import { Observable} from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
-  constructor() { }
+  films: Observable<any>;
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit() {
     // With Routing in Ionic, The OnInit lifecycle hook 
     // may not get called consistently.
-    console.log("LoginPage - OnInit")
+    console.log("LoginPage - OnInit");
+    this.films = this.http.get('https://swapi.dev/api/films');
   }
 
   ngOnDestroy() {
