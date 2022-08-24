@@ -10,7 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetailPage implements OnInit, OnDestroy {
 
   film: any;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) {}
+  constructor(private router: Router, 
+    private activatedRoute: ActivatedRoute, 
+    private http: HttpClient) {}
 
   goBack() {
     this.router.navigate(['/login'])

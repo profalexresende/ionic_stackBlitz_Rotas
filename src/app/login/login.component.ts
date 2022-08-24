@@ -1,14 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
 import { Observable} from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  
   films: Observable<any>;
   constructor(private http: HttpClient,
     private router: Router) { }
